@@ -8,8 +8,8 @@ from sqlalchemy import create_engine
 
 Base = declarative_base()
 
-class Catalog(Base):
-    __tablename__ = 'catalog'
+class Category(Base):
+    __tablename__ = 'category'
     name = Column(String(80), nullable = False)
     id = Column(Integer, primary_key = True)
 
@@ -21,10 +21,10 @@ class CatalogItem(Base):
 
     description = Column(String(250))
 
-    catalog_id = Column(Integer, ForeignKey('catalog.id'))
+    category_id = Column(Integer, ForeignKey('category.id'))
 
 
-    catalog = relationship(Catalog)
+    category = relationship(Category)
 
     @property
     def serialize(self):
